@@ -15,7 +15,7 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"whyz (GangJun Jo)","sameAs":["https://github.com/0rkha","https://facebook.com/profile.php?id=100011132584349","mailto:xx0rkha@gmail.com"],"image":"thumbnail.png"},"articleBody":"\n\n문제https://www.acmicpc.net/problem/13537\n풀이수열을 다음과 같은 업데이트 쿼리로 해석한다.\na b : 위치가 a인 위치를 b로 교체\n그리고 쿼리 (i j k)를 k에 대해 내림차순으로 정렬한다.\n업데이트 쿼리들도 마찬가지로, b에 대해 내림차순으로 정렬한다.\n그리고, k&gt;b를 만족할때, 세그먼트 트리에서 위치가 a인 곳에 1을 업데이트 한다.\n그러면, 트리에서 i부터 j까지의 합이 쿼리 (i j k)에 대한 답변이 된다.\n출력할때도, 쿼리의 입력순으로 정렬해주자. \n소스12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;#include&lt;functional&gt;#define ll long longusing namespace std;struct _ &#123; ll idx, i, j, k; &#125;;bool operator&lt;(_ a, _ b) &#123; return a.k &gt; b.k; &#125;vector&lt;_&gt; query;vector&lt;pair&lt;ll, ll&gt; &gt;arr, ans;ll N, MAX, tree[400000], M;void update(ll p, ll v) &#123;\tp += MAX;\ttree[p] = v;\tfor (; p /= 2; tree[p] = tree[2 * p] + tree[2 * p + 1]);&#125;ll sum(ll s, ll e) &#123;\tll res = 0;\ts += MAX, e += MAX;\twhile (s &lt; e) &#123;\t\tif (s % 2)\t\t\tres += tree[s++];\t\tif (e % 2 == 0)\t\t\tres += tree[e--];\t\te /= 2;\t\ts /= 2;\t&#125;\tif(s==e)\t\tres += tree[e];\treturn res;&#125;int main() &#123;\tios::sync_with_stdio(0); cin.tie(0);\tcin &gt;&gt; N;\tfor (MAX = 1; MAX &lt; N; MAX *= 2);\tfor (int i = 1; i &lt;= N; i++) &#123;\t\tll tmp;\t\tcin &gt;&gt; tmp;\t\tarr.push_back(&#123; tmp,i &#125;);\t&#125;\tcin &gt;&gt; M;\tfor (int i = 0; i &lt; M; i++) &#123;\t\tll a, b, c;\t\tcin &gt;&gt; a &gt;&gt; b &gt;&gt; c;\t\tquery.push_back(&#123; i,a,b,c &#125;);\t&#125;\tsort(arr.begin(), arr.end(), greater&lt;pair&lt;ll, ll&gt; &gt;() );\tsort(query.begin(), query.end());\tll now = 0;\tfor (auto idx : query) &#123;\t\twhile (now &lt; arr.size() &amp;&amp; idx.k &lt; arr[now].first) &#123;\t\t\tupdate(arr[now].second, 1);\t\t\tnow++;\t\t&#125;\t\tans.push_back(&#123; idx.idx, sum(idx.i,idx.j) &#125;);\t&#125;\tsort(ans.begin(), ans.end());\tfor (auto idx : ans)\t\tcout &lt;&lt; idx.second &lt;&lt; &quot;\\n&quot;;&#125;","dateCreated":"2019-08-01T23:04:48+09:00","dateModified":"2022-08-14T04:17:08+09:00","datePublished":"2019-08-01T23:04:48+09:00","description":"[BOJ] 13537 | 수열과 쿼리 1","headline":"[BOJ] 13537 | 수열과 쿼리 1","image":["https://d2gd6pc034wcta.cloudfront.net/tier/18.svg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://whyz-dev.github.io/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/"},"publisher":{"@type":"Organization","name":"whyz (GangJun Jo)","sameAs":["https://github.com/0rkha","https://facebook.com/profile.php?id=100011132584349","mailto:xx0rkha@gmail.com"],"image":"thumbnail.png","logo":{"@type":"ImageObject","url":"thumbnail.png"}},"url":"https://whyz-dev.github.io/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/","keywords":"BOJ, segment_tree, sort","thumbnailUrl":"https://d2gd6pc034wcta.cloudfront.net/tier/18.svg"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"whyz (GangJun Jo)","sameAs":["https://github.com/0rkha","https://facebook.com/profile.php?id=100011132584349","mailto:xx0rkha@gmail.com"],"image":"thumbnail.png"},"articleBody":"\n\n문제https://www.acmicpc.net/problem/13537\n풀이수열을 다음과 같은 업데이트 쿼리로 해석한다.\na b : 위치가 a인 위치를 b로 교체\n그리고 쿼리 (i j k)를 k에 대해 내림차순으로 정렬한다.\n업데이트 쿼리들도 마찬가지로, b에 대해 내림차순으로 정렬한다.\n그리고, k&gt;b를 만족할때, 세그먼트 트리에서 위치가 a인 곳에 1을 업데이트 한다.\n그러면, 트리에서 i부터 j까지의 합이 쿼리 (i j k)에 대한 답변이 된다.\n출력할때도, 쿼리의 입력순으로 정렬해주자. \n소스12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;#include&lt;functional&gt;#define ll long longusing namespace std;struct _ &#123; ll idx, i, j, k; &#125;;bool operator&lt;(_ a, _ b) &#123; return a.k &gt; b.k; &#125;vector&lt;_&gt; query;vector&lt;pair&lt;ll, ll&gt; &gt;arr, ans;ll N, MAX, tree[400000], M;void update(ll p, ll v) &#123;\tp += MAX;\ttree[p] = v;\tfor (; p /= 2; tree[p] = tree[2 * p] + tree[2 * p + 1]);&#125;ll sum(ll s, ll e) &#123;\tll res = 0;\ts += MAX, e += MAX;\twhile (s &lt; e) &#123;\t\tif (s % 2)\t\t\tres += tree[s++];\t\tif (e % 2 == 0)\t\t\tres += tree[e--];\t\te /= 2;\t\ts /= 2;\t&#125;\tif(s==e)\t\tres += tree[e];\treturn res;&#125;int main() &#123;\tios::sync_with_stdio(0); cin.tie(0);\tcin &gt;&gt; N;\tfor (MAX = 1; MAX &lt; N; MAX *= 2);\tfor (int i = 1; i &lt;= N; i++) &#123;\t\tll tmp;\t\tcin &gt;&gt; tmp;\t\tarr.push_back(&#123; tmp,i &#125;);\t&#125;\tcin &gt;&gt; M;\tfor (int i = 0; i &lt; M; i++) &#123;\t\tll a, b, c;\t\tcin &gt;&gt; a &gt;&gt; b &gt;&gt; c;\t\tquery.push_back(&#123; i,a,b,c &#125;);\t&#125;\tsort(arr.begin(), arr.end(), greater&lt;pair&lt;ll, ll&gt; &gt;() );\tsort(query.begin(), query.end());\tll now = 0;\tfor (auto idx : query) &#123;\t\twhile (now &lt; arr.size() &amp;&amp; idx.k &lt; arr[now].first) &#123;\t\t\tupdate(arr[now].second, 1);\t\t\tnow++;\t\t&#125;\t\tans.push_back(&#123; idx.idx, sum(idx.i,idx.j) &#125;);\t&#125;\tsort(ans.begin(), ans.end());\tfor (auto idx : ans)\t\tcout &lt;&lt; idx.second &lt;&lt; &quot;\\n&quot;;&#125;","dateCreated":"2019-08-01T23:04:48+09:00","dateModified":"2024-10-31T18:55:25+09:00","datePublished":"2019-08-01T23:04:48+09:00","description":"[BOJ] 13537 | 수열과 쿼리 1","headline":"[BOJ] 13537 | 수열과 쿼리 1","image":["https://d2gd6pc034wcta.cloudfront.net/tier/18.svg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://whyz-dev.github.io/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/"},"publisher":{"@type":"Organization","name":"whyz (GangJun Jo)","sameAs":["https://github.com/0rkha","https://facebook.com/profile.php?id=100011132584349","mailto:xx0rkha@gmail.com"],"image":"thumbnail.png","logo":{"@type":"ImageObject","url":"thumbnail.png"}},"url":"https://whyz-dev.github.io/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/","keywords":"BOJ, segment_tree, sort","thumbnailUrl":"https://d2gd6pc034wcta.cloudfront.net/tier/18.svg"}</script>
     <meta name="description" content="[BOJ] 13537 | 수열과 쿼리 1">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="[BOJ] 13537 | 수열과 쿼리 1">
@@ -24,7 +24,7 @@
 <meta property="og:description" content="[BOJ] 13537 | 수열과 쿼리 1">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-08-01T14:04:48.000Z">
-<meta property="article:modified_time" content="2022-08-13T19:17:08.516Z">
+<meta property="article:modified_time" content="2024-10-31T09:55:25.213Z">
 <meta property="article:author" content="whyz (GangJun Jo)">
 <meta property="article:tag" content="BOJ">
 <meta property="article:tag" content="segment_tree">
@@ -948,6 +948,39 @@
                     <hr>
                 </div>
                 
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a
+                            class="link-unstyled"
+                            href="https://whyz-dev.github.io/2024/10/31/Dacon-2024-%EC%83%9D%EB%AA%85%EC%97%B0%EA%B5%AC%EC%9E%90%EC%9B%90-AI%ED%99%9C%EC%9A%A9-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0/"
+                            aria-label=": [Dacon] 2024 생명연구자원 AI활용 경진대회 후기"
+                        >
+                            <img class="media-image" src="https://whyz-dev.github.io/2024/10/31/Dacon-2024-%EC%83%9D%EB%AA%85%EC%97%B0%EA%B5%AC%EC%9E%90%EC%9B%90-AI%ED%99%9C%EC%9A%A9-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0/header_background.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://whyz-dev.github.io/2024/10/31/Dacon-2024-%EC%83%9D%EB%AA%85%EC%97%B0%EA%B5%AC%EC%9E%90%EC%9B%90-AI%ED%99%9C%EC%9A%A9-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0/"
+                            aria-label=": [Dacon] 2024 생명연구자원 AI활용 경진대회 후기"
+                        >
+                            <h3 class="media-heading">[Dacon] 2024 생명연구자원 AI활용 경진대회 후기</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 31, 2024
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>[Dacon] 2024 생명연구자원 AI활용 경진대회 후기</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -955,7 +988,7 @@
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                9 posts found
+                10 posts found
             </p>
         </div>
     </div>
