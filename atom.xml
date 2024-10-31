@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://0rkha.xyz/"/>
-  <updated>2022-12-24T12:30:58.772Z</updated>
+  <updated>2022-08-13T19:17:17.398Z</updated>
   <id>http://0rkha.xyz/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>[DevDiary] 📚 22.12.23 📚</title>
-    <link href="http://0rkha.xyz/2022/12/23/DevDiary-22-12-23/"/>
-    <id>http://0rkha.xyz/2022/12/23/DevDiary-22-12-23/</id>
-    <published>2022-12-23T13:26:37.000Z</published>
-    <updated>2022-12-24T12:30:58.772Z</updated>
-    
-    <content type="html"><![CDATA[<!-- excerpt --><h1 id="📚-개발-일지"><a href="#📚-개발-일지" class="headerlink" title="📚 개발 일지"></a>📚 개발 일지</h1><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>소프트웨어 마에스트로를 준비하기로 마음먹었다.</p><p>다음 목록을 준비해야한다.</p><blockquote><p>알고리즘<br>SQL<br>CS 면접 준비<br>AI<br>포트폴리오 정리<br>자기소개서 작성</p></blockquote><h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>소마 프로젝트 겸 과외 수업 자료 준비겸 <code>문제 출제 사이트</code>를 하나 만들기로 했다.</p><p>오늘은 친구와 커리큘럼과 출제할 문제의 유형에 대해 정리했다.</p><p>아마 정해진 유형의 문제를 골고루 랜덤하게 출제하는 기출문제식 문제 풀이 사이트가 될 듯 하다.</p><p>백엔드는 django, 프론트는 react, DB는 mysql을 생각중이다. </p><p>지금은 프로토타이핑을 하고 있다.</p><h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p>종강도 했으니 슬슬 ai 공부에도 속도를 올려할 것 같다.</p><p>vgg의 tensorflow 구현을 마치고, resnet을 정리해야한다.</p><p>mmdetection3D를 동작시키기 위해서 준비를 해야겠다.</p><h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><p>혹시 시간이 날지 모르겠으나, 시간이 난다면 ai 대회를 하나 참가해야겠다.</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2022.12.23&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="DevDiary" scheme="http://0rkha.xyz/categories/DevDiary/"/>
-    
-    
-      <category term="DevDiary" scheme="http://0rkha.xyz/tags/DevDiary/"/>
-    
-  </entry>
   
   <entry>
     <title>[BOJ] 3176 | 도로 네트워크</title>
@@ -249,7 +227,7 @@
     <published>2019-07-21T12:10:33.000Z</published>
     <updated>2022-08-13T19:20:36.269Z</updated>
     
-    <content type="html"><![CDATA[<p>안녕하세요, 0rkha입니다.</p><p>오늘 2019&#x2F;07&#x2F;21을 기준으로 새로운 깃허브 블로그를 개설하게 되었습니다.</p><span id="more"></span><p>아마 머신러닝과 딥러닝, 알고리즘 등의 데이터 사이언스 부분의 포스팅을 주로 하게 될것 같습니다.</p><p>블로그의 테마는  <a href="https://github.com/LouisBarranqueiro">LouisBarranqueiro</a>의 <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak">tranquilpeak</a>를 이용하여 수정하였습니다.</p><p>게시글에 대하여 궁금한 점이나 개인적으로 연락하시고 싶으시면,</p><p><a href="mailto:&#52;&#117;&#114;&#x61;&#x30;&#50;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#109;">&#52;&#117;&#114;&#x61;&#x30;&#50;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#109;</a> 으로 메일을 보내주시면 감사하겠습니다.</p>]]></content>
+    <content type="html"><![CDATA[<p>안녕하세요, 0rkha입니다.</p><p>오늘 2019&#x2F;07&#x2F;21을 기준으로 새로운 깃허브 블로그를 개설하게 되었습니다.</p><span id="more"></span><p>아마 머신러닝과 딥러닝, 알고리즘 등의 데이터 사이언스 부분의 포스팅을 주로 하게 될것 같습니다.</p><p>블로그의 테마는  <a href="https://github.com/LouisBarranqueiro">LouisBarranqueiro</a>의 <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak">tranquilpeak</a>를 이용하여 수정하였습니다.</p><p>게시글에 대하여 궁금한 점이나 개인적으로 연락하시고 싶으시면,</p><p><a href="mailto:&#x34;&#x75;&#x72;&#x61;&#x30;&#50;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;">&#x34;&#x75;&#x72;&#x61;&#x30;&#50;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;</a> 으로 메일을 보내주시면 감사하겠습니다.</p>]]></content>
     
     <summary type="html">
     
