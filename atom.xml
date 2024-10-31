@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>0rkha Blog</title>
+  <title>whyz Blog</title>
   
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://0rkha.xyz/"/>
+  <link href="https://whyz-dev.github.io/"/>
   <updated>2022-08-13T19:17:17.398Z</updated>
-  <id>http://0rkha.xyz/</id>
+  <id>https://whyz-dev.github.io/</id>
   
   <author>
-    <name>0rkha (GangJun Jo)</name>
+    <name>whyz (GangJun Jo)</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>[BOJ] 3176 | 도로 네트워크</title>
-    <link href="http://0rkha.xyz/2019/08/07/BOJ-3176-%EB%8F%84%EB%A1%9C-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/"/>
-    <id>http://0rkha.xyz/2019/08/07/BOJ-3176-도로-네트워크/</id>
+    <link href="https://whyz-dev.github.io/2019/08/07/BOJ-3176-%EB%8F%84%EB%A1%9C-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/"/>
+    <id>https://whyz-dev.github.io/2019/08/07/BOJ-3176-도로-네트워크/</id>
     <published>2019-08-07T14:06:00.000Z</published>
     <updated>2022-08-13T19:17:17.398Z</updated>
     
@@ -31,21 +31,21 @@
     
     </summary>
     
-      <category term="PS" scheme="http://0rkha.xyz/categories/PS/"/>
+      <category term="PS" scheme="https://whyz-dev.github.io/categories/PS/"/>
     
     
-      <category term="BOJ" scheme="http://0rkha.xyz/tags/BOJ/"/>
+      <category term="BOJ" scheme="https://whyz-dev.github.io/tags/BOJ/"/>
     
-      <category term="DP" scheme="http://0rkha.xyz/tags/DP/"/>
+      <category term="DP" scheme="https://whyz-dev.github.io/tags/DP/"/>
     
-      <category term="LCA" scheme="http://0rkha.xyz/tags/LCA/"/>
+      <category term="LCA" scheme="https://whyz-dev.github.io/tags/LCA/"/>
     
   </entry>
   
   <entry>
     <title>[BOJ] 5419 | 북서풍</title>
-    <link href="http://0rkha.xyz/2019/08/07/BOJ-5419-%EB%B6%81%EC%84%9C%ED%92%8D/"/>
-    <id>http://0rkha.xyz/2019/08/07/BOJ-5419-북서풍/</id>
+    <link href="https://whyz-dev.github.io/2019/08/07/BOJ-5419-%EB%B6%81%EC%84%9C%ED%92%8D/"/>
+    <id>https://whyz-dev.github.io/2019/08/07/BOJ-5419-북서풍/</id>
     <published>2019-08-07T13:01:09.000Z</published>
     <updated>2022-08-13T19:17:15.706Z</updated>
     
@@ -57,23 +57,23 @@
     
     </summary>
     
-      <category term="PS" scheme="http://0rkha.xyz/categories/PS/"/>
+      <category term="PS" scheme="https://whyz-dev.github.io/categories/PS/"/>
     
     
-      <category term="BOJ" scheme="http://0rkha.xyz/tags/BOJ/"/>
+      <category term="BOJ" scheme="https://whyz-dev.github.io/tags/BOJ/"/>
     
-      <category term="segment-tree" scheme="http://0rkha.xyz/tags/segment-tree/"/>
+      <category term="segment-tree" scheme="https://whyz-dev.github.io/tags/segment-tree/"/>
     
-      <category term="binary-search" scheme="http://0rkha.xyz/tags/binary-search/"/>
+      <category term="binary-search" scheme="https://whyz-dev.github.io/tags/binary-search/"/>
     
-      <category term="line-sweeping" scheme="http://0rkha.xyz/tags/line-sweeping/"/>
+      <category term="line-sweeping" scheme="https://whyz-dev.github.io/tags/line-sweeping/"/>
     
   </entry>
   
   <entry>
     <title>[BOJ] 13537 | 수열과 쿼리 1</title>
-    <link href="http://0rkha.xyz/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/"/>
-    <id>http://0rkha.xyz/2019/08/01/BOJ-13537-수열과-쿼리-1/</id>
+    <link href="https://whyz-dev.github.io/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/"/>
+    <id>https://whyz-dev.github.io/2019/08/01/BOJ-13537-수열과-쿼리-1/</id>
     <published>2019-08-01T14:04:48.000Z</published>
     <updated>2022-08-13T19:17:08.516Z</updated>
     
@@ -85,21 +85,21 @@
     
     </summary>
     
-      <category term="PS" scheme="http://0rkha.xyz/categories/PS/"/>
+      <category term="PS" scheme="https://whyz-dev.github.io/categories/PS/"/>
     
     
-      <category term="BOJ" scheme="http://0rkha.xyz/tags/BOJ/"/>
+      <category term="BOJ" scheme="https://whyz-dev.github.io/tags/BOJ/"/>
     
-      <category term="segment_tree" scheme="http://0rkha.xyz/tags/segment-tree/"/>
+      <category term="segment_tree" scheme="https://whyz-dev.github.io/tags/segment-tree/"/>
     
-      <category term="sort" scheme="http://0rkha.xyz/tags/sort/"/>
+      <category term="sort" scheme="https://whyz-dev.github.io/tags/sort/"/>
     
   </entry>
   
   <entry>
     <title>[BOJ] 2436 | 공약수</title>
-    <link href="http://0rkha.xyz/2019/07/28/BOJ-2436-%EA%B3%B5%EC%95%BD%EC%88%98/"/>
-    <id>http://0rkha.xyz/2019/07/28/BOJ-2436-공약수/</id>
+    <link href="https://whyz-dev.github.io/2019/07/28/BOJ-2436-%EA%B3%B5%EC%95%BD%EC%88%98/"/>
+    <id>https://whyz-dev.github.io/2019/07/28/BOJ-2436-공약수/</id>
     <published>2019-07-28T03:10:00.000Z</published>
     <updated>2022-08-13T19:17:19.810Z</updated>
     
@@ -111,21 +111,21 @@
     
     </summary>
     
-      <category term="PS" scheme="http://0rkha.xyz/categories/PS/"/>
+      <category term="PS" scheme="https://whyz-dev.github.io/categories/PS/"/>
     
     
-      <category term="BOJ" scheme="http://0rkha.xyz/tags/BOJ/"/>
+      <category term="BOJ" scheme="https://whyz-dev.github.io/tags/BOJ/"/>
     
-      <category term="KOI" scheme="http://0rkha.xyz/tags/KOI/"/>
+      <category term="KOI" scheme="https://whyz-dev.github.io/tags/KOI/"/>
     
-      <category term="Euclidean-algorithm" scheme="http://0rkha.xyz/tags/Euclidean-algorithm/"/>
+      <category term="Euclidean-algorithm" scheme="https://whyz-dev.github.io/tags/Euclidean-algorithm/"/>
     
   </entry>
   
   <entry>
     <title>[BOJ] 11047 | 동전 0</title>
-    <link href="http://0rkha.xyz/2019/07/26/BOJ-11047-%EB%8F%99%EC%A0%84-0/"/>
-    <id>http://0rkha.xyz/2019/07/26/BOJ-11047-동전-0/</id>
+    <link href="https://whyz-dev.github.io/2019/07/26/BOJ-11047-%EB%8F%99%EC%A0%84-0/"/>
+    <id>https://whyz-dev.github.io/2019/07/26/BOJ-11047-동전-0/</id>
     <published>2019-07-26T13:55:16.000Z</published>
     <updated>2022-08-13T19:17:13.484Z</updated>
     
@@ -137,19 +137,19 @@
     
     </summary>
     
-      <category term="PS" scheme="http://0rkha.xyz/categories/PS/"/>
+      <category term="PS" scheme="https://whyz-dev.github.io/categories/PS/"/>
     
     
-      <category term="BOJ" scheme="http://0rkha.xyz/tags/BOJ/"/>
+      <category term="BOJ" scheme="https://whyz-dev.github.io/tags/BOJ/"/>
     
-      <category term="greedy" scheme="http://0rkha.xyz/tags/greedy/"/>
+      <category term="greedy" scheme="https://whyz-dev.github.io/tags/greedy/"/>
     
   </entry>
   
   <entry>
     <title>[BOJ] 2294 | 동전 2</title>
-    <link href="http://0rkha.xyz/2019/07/26/BOJ-2294-%EB%8F%99%EC%A0%84-2/"/>
-    <id>http://0rkha.xyz/2019/07/26/BOJ-2294-동전-2/</id>
+    <link href="https://whyz-dev.github.io/2019/07/26/BOJ-2294-%EB%8F%99%EC%A0%84-2/"/>
+    <id>https://whyz-dev.github.io/2019/07/26/BOJ-2294-동전-2/</id>
     <published>2019-07-26T13:32:25.000Z</published>
     <updated>2022-08-13T19:17:21.618Z</updated>
     
@@ -161,19 +161,19 @@
     
     </summary>
     
-      <category term="PS" scheme="http://0rkha.xyz/categories/PS/"/>
+      <category term="PS" scheme="https://whyz-dev.github.io/categories/PS/"/>
     
     
-      <category term="BOJ" scheme="http://0rkha.xyz/tags/BOJ/"/>
+      <category term="BOJ" scheme="https://whyz-dev.github.io/tags/BOJ/"/>
     
-      <category term="DP" scheme="http://0rkha.xyz/tags/DP/"/>
+      <category term="DP" scheme="https://whyz-dev.github.io/tags/DP/"/>
     
   </entry>
   
   <entry>
     <title>[BOJ] 1451 | 직사각형으로 나누기</title>
-    <link href="http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"/>
-    <id>http://0rkha.xyz/2019/07/26/BOJ-1451-직사각형으로-나누기/</id>
+    <link href="https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"/>
+    <id>https://whyz-dev.github.io/2019/07/26/BOJ-1451-직사각형으로-나누기/</id>
     <published>2019-07-26T09:54:32.000Z</published>
     <updated>2022-08-13T19:17:40.274Z</updated>
     
@@ -185,21 +185,21 @@
     
     </summary>
     
-      <category term="PS" scheme="http://0rkha.xyz/categories/PS/"/>
+      <category term="PS" scheme="https://whyz-dev.github.io/categories/PS/"/>
     
     
-      <category term="BOJ" scheme="http://0rkha.xyz/tags/BOJ/"/>
+      <category term="BOJ" scheme="https://whyz-dev.github.io/tags/BOJ/"/>
     
-      <category term="brute-force" scheme="http://0rkha.xyz/tags/brute-force/"/>
+      <category term="brute-force" scheme="https://whyz-dev.github.io/tags/brute-force/"/>
     
-      <category term="prefix-sum" scheme="http://0rkha.xyz/tags/prefix-sum/"/>
+      <category term="prefix-sum" scheme="https://whyz-dev.github.io/tags/prefix-sum/"/>
     
   </entry>
   
   <entry>
     <title>[BOJ] 2293 | 동전 1</title>
-    <link href="http://0rkha.xyz/2019/07/26/BOJ-2293-%EB%8F%99%EC%A0%84-1/"/>
-    <id>http://0rkha.xyz/2019/07/26/BOJ-2293-동전-1/</id>
+    <link href="https://whyz-dev.github.io/2019/07/26/BOJ-2293-%EB%8F%99%EC%A0%84-1/"/>
+    <id>https://whyz-dev.github.io/2019/07/26/BOJ-2293-동전-1/</id>
     <published>2019-07-26T07:38:33.000Z</published>
     <updated>2022-08-13T19:17:26.298Z</updated>
     
@@ -211,19 +211,19 @@
     
     </summary>
     
-      <category term="PS" scheme="http://0rkha.xyz/categories/PS/"/>
+      <category term="PS" scheme="https://whyz-dev.github.io/categories/PS/"/>
     
     
-      <category term="BOJ" scheme="http://0rkha.xyz/tags/BOJ/"/>
+      <category term="BOJ" scheme="https://whyz-dev.github.io/tags/BOJ/"/>
     
-      <category term="DP" scheme="http://0rkha.xyz/tags/DP/"/>
+      <category term="DP" scheme="https://whyz-dev.github.io/tags/DP/"/>
     
   </entry>
   
   <entry>
     <title>Intro</title>
-    <link href="http://0rkha.xyz/2019/07/21/%EC%9D%B4-%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/"/>
-    <id>http://0rkha.xyz/2019/07/21/이-블로그에-대하여/</id>
+    <link href="https://whyz-dev.github.io/2019/07/21/%EC%9D%B4-%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/"/>
+    <id>https://whyz-dev.github.io/2019/07/21/이-블로그에-대하여/</id>
     <published>2019-07-21T12:10:33.000Z</published>
     <updated>2022-08-13T19:20:36.269Z</updated>
     
@@ -237,7 +237,7 @@
     </summary>
     
     
-      <category term="etc" scheme="http://0rkha.xyz/tags/etc/"/>
+      <category term="etc" scheme="https://whyz-dev.github.io/tags/etc/"/>
     
   </entry>
   

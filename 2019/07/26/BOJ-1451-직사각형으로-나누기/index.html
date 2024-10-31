@@ -5,39 +5,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="0rkha Blog">
-    <title>[BOJ] 1451 | 직사각형으로 나누기 - 0rkha Blog</title>
-    <meta name="author" content="0rkha (GangJun Jo)">
+    <meta name="generator" content="whyz Blog">
+    <title>[BOJ] 1451 | 직사각형으로 나누기 - whyz Blog</title>
+    <meta name="author" content="whyz (GangJun Jo)">
     
     
-        <link rel="icon" href="http://0rkha.xyz/assets/images/favicon.png">
+        <link rel="icon" href="https://whyz-dev.github.io/assets/images/favicon.png">
     
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"0rkha (GangJun Jo)","sameAs":["https://github.com/0rkha","https://facebook.com/profile.php?id=100011132584349","mailto:xx0rkha@gmail.com"],"image":"thumbnail.png"},"articleBody":"\n\n문제https://www.acmicpc.net/problem/1451\n풀이\n가능한 6가지 경우의 수를 생각하여 모든 경우의 수를 계산해주면 된다.\n직사각형의 넓이를 구할때는 구간 합(prefix sum)을 이용하여 O(1)에 계산해줄 수 있다.\n두 직사각형 사이에 한 직사각형이 껴있는 경우의 시간복잡도는 각각 O(N^2)과 O(M^2),\n나머지 경우의 수는 시간복잡도가 O(NM)이므로, 대충 전체 시간복잡도는 O(NM).\n소스123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;long long N, M, arr[111][111], sum[111][111], ans;int main() &#123;\tscanf(&quot;%d%d&quot;, &amp;N, &amp;M);\tfor (int i = 1; i &lt;= N; i++)\t\tfor (int j = 1; j &lt;= M; j++) &#123;\t\t\tscanf(&quot;%1d&quot;, &amp;arr[i][j]);\t\t\tsum[i][j] = sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1] + arr[i][j];\t\t&#125;\tfor (int i = 1; i &lt; N; i++)\t\tfor (int j = 1; j &lt; M; j++) &#123;\t\t\tlong long a, b, c;\t\t\ta = sum[i][j];\t\t\tb = sum[N][j] - sum[i][j];\t\t\tc = sum[N][M] - sum[N][j];\t\t\tans = max(ans, a*b*c);\t\t\tb = sum[i][M] - sum[i][j];\t\t\tc = sum[N][M] - sum[i][M];\t\t\tans = max(ans, a*b*c);\t\t\ta = sum[N][M] - sum[N][j] - sum[i][M] +sum[i][j];\t\t\tb = sum[N][j];\t\t\tc = sum[i][M] - sum[i][j];\t\t\tans = max(ans, a*b*c);\t\t\tb = sum[i][M];\t\t\tc = sum[N][j] - sum[i][j];\t\t\tans = max(ans, a*b*c);\t\t&#125;\tfor (int i = 1; i &lt; N; i++)\t\tfor (int j = i + 1; j &lt; N; j++)\t\t\tans = max(ans, sum[i][M] * (sum[j][M] - sum[i][M]) *(sum[N][M] - sum[j][M]));\tfor (int i = 1; i &lt; M; i++)\t\tfor (int j = i + 1; j &lt; M; j++)\t\t\tans = max(ans, sum[N][i] * (sum[N][j] - sum[N][i]) *(sum[N][M] - sum[N][j]));\tcout &lt;&lt; ans;&#125;","dateCreated":"2019-07-26T18:54:32+09:00","dateModified":"2022-08-14T04:17:40+09:00","datePublished":"2019-07-26T18:54:32+09:00","description":"[BOJ] 1451 | 직사각형으로 나누기","headline":"[BOJ] 1451 | 직사각형으로 나누기","image":["https://d2gd6pc034wcta.cloudfront.net/tier/11.svg"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"},"publisher":{"@type":"Organization","name":"0rkha (GangJun Jo)","sameAs":["https://github.com/0rkha","https://facebook.com/profile.php?id=100011132584349","mailto:xx0rkha@gmail.com"],"image":"thumbnail.png","logo":{"@type":"ImageObject","url":"thumbnail.png"}},"url":"http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/","keywords":"BOJ, brute-force, prefix-sum","thumbnailUrl":"https://d2gd6pc034wcta.cloudfront.net/tier/11.svg"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"whyz (GangJun Jo)","sameAs":["https://github.com/0rkha","https://facebook.com/profile.php?id=100011132584349","mailto:xx0rkha@gmail.com"],"image":"thumbnail.png"},"articleBody":"\n\n문제https://www.acmicpc.net/problem/1451\n풀이\n가능한 6가지 경우의 수를 생각하여 모든 경우의 수를 계산해주면 된다.\n직사각형의 넓이를 구할때는 구간 합(prefix sum)을 이용하여 O(1)에 계산해줄 수 있다.\n두 직사각형 사이에 한 직사각형이 껴있는 경우의 시간복잡도는 각각 O(N^2)과 O(M^2),\n나머지 경우의 수는 시간복잡도가 O(NM)이므로, 대충 전체 시간복잡도는 O(NM).\n소스123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;long long N, M, arr[111][111], sum[111][111], ans;int main() &#123;\tscanf(&quot;%d%d&quot;, &amp;N, &amp;M);\tfor (int i = 1; i &lt;= N; i++)\t\tfor (int j = 1; j &lt;= M; j++) &#123;\t\t\tscanf(&quot;%1d&quot;, &amp;arr[i][j]);\t\t\tsum[i][j] = sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1] + arr[i][j];\t\t&#125;\tfor (int i = 1; i &lt; N; i++)\t\tfor (int j = 1; j &lt; M; j++) &#123;\t\t\tlong long a, b, c;\t\t\ta = sum[i][j];\t\t\tb = sum[N][j] - sum[i][j];\t\t\tc = sum[N][M] - sum[N][j];\t\t\tans = max(ans, a*b*c);\t\t\tb = sum[i][M] - sum[i][j];\t\t\tc = sum[N][M] - sum[i][M];\t\t\tans = max(ans, a*b*c);\t\t\ta = sum[N][M] - sum[N][j] - sum[i][M] +sum[i][j];\t\t\tb = sum[N][j];\t\t\tc = sum[i][M] - sum[i][j];\t\t\tans = max(ans, a*b*c);\t\t\tb = sum[i][M];\t\t\tc = sum[N][j] - sum[i][j];\t\t\tans = max(ans, a*b*c);\t\t&#125;\tfor (int i = 1; i &lt; N; i++)\t\tfor (int j = i + 1; j &lt; N; j++)\t\t\tans = max(ans, sum[i][M] * (sum[j][M] - sum[i][M]) *(sum[N][M] - sum[j][M]));\tfor (int i = 1; i &lt; M; i++)\t\tfor (int j = i + 1; j &lt; M; j++)\t\t\tans = max(ans, sum[N][i] * (sum[N][j] - sum[N][i]) *(sum[N][M] - sum[N][j]));\tcout &lt;&lt; ans;&#125;","dateCreated":"2019-07-26T18:54:32+09:00","dateModified":"2022-08-14T04:17:40+09:00","datePublished":"2019-07-26T18:54:32+09:00","description":"[BOJ] 1451 | 직사각형으로 나누기","headline":"[BOJ] 1451 | 직사각형으로 나누기","image":["https://d2gd6pc034wcta.cloudfront.net/tier/11.svg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"},"publisher":{"@type":"Organization","name":"whyz (GangJun Jo)","sameAs":["https://github.com/0rkha","https://facebook.com/profile.php?id=100011132584349","mailto:xx0rkha@gmail.com"],"image":"thumbnail.png","logo":{"@type":"ImageObject","url":"thumbnail.png"}},"url":"https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/","keywords":"BOJ, brute-force, prefix-sum","thumbnailUrl":"https://d2gd6pc034wcta.cloudfront.net/tier/11.svg"}</script>
     <meta name="description" content="[BOJ] 1451 | 직사각형으로 나누기">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="[BOJ] 1451 | 직사각형으로 나누기">
-<meta property="og:url" content="http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/index.html">
-<meta property="og:site_name" content="0rkha Blog">
+<meta property="og:url" content="https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/index.html">
+<meta property="og:site_name" content="whyz Blog">
 <meta property="og:description" content="[BOJ] 1451 | 직사각형으로 나누기">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://0rkha.xyz/%5C01.png">
+<meta property="og:image" content="https://whyz-dev.github.io/%5C01.png">
 <meta property="article:published_time" content="2019-07-26T09:54:32.000Z">
 <meta property="article:modified_time" content="2022-08-13T19:17:40.274Z">
-<meta property="article:author" content="0rkha (GangJun Jo)">
+<meta property="article:author" content="whyz (GangJun Jo)">
 <meta property="article:tag" content="BOJ">
 <meta property="article:tag" content="brute-force">
 <meta property="article:tag" content="prefix-sum">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://0rkha.xyz/%5C01.png">
+<meta name="twitter:image" content="https://whyz-dev.github.io/%5C01.png">
     
     
         
     
     
-        <meta property="og:image" content="http://0rkha.xyz/assets/images/thumbnail.png"/>
+        <meta property="og:image" content="https://whyz-dev.github.io/assets/images/thumbnail.png"/>
     
     
         <meta property="og:image" content="https://d2gd6pc034wcta.cloudfront.net/tier/11.svg"/>
@@ -91,7 +91,7 @@
             href="/%20"
             aria-label=""
         >
-            0rkha Blog
+            whyz Blog
         </a>
     </div>
     
@@ -126,7 +126,7 @@
                 >
                     <img class="sidebar-profile-picture" src="/assets/images/thumbnail.png" alt="Author&#39;s picture"/>
                 </a>
-                <h4 class="sidebar-profile-name">0rkha (GangJun Jo)</h4>
+                <h4 class="sidebar-profile-name">whyz (GangJun Jo)</h4>
                 
                     <h5 class="sidebar-profile-bio"><p>내가 만든 똥덩어리</p>
 </h5>
@@ -364,7 +364,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                     title="Share on Facebook"
                     aria-label="Share on Facebook"
                 >
@@ -377,7 +377,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                     title="Share on Twitter"
                     aria-label="Share on Twitter"
                 >
@@ -390,7 +390,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                    target="new" href="https://plus.google.com/share?url=https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                     title="Share on Google+"
                     aria-label="Share on Google+"
                 >
@@ -437,7 +437,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2024 0rkha (GangJun Jo). All Rights Reserved.
+        Copyrights &copy; 2024 whyz (GangJun Jo). All Rights Reserved.
     </span>
 </footer>
 
@@ -493,7 +493,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                     title="Share on Facebook"
                     aria-label="Share on Facebook"
                 >
@@ -506,7 +506,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                     title="Share on Twitter"
                     aria-label="Share on Twitter"
                 >
@@ -519,7 +519,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                    target="new" href="https://plus.google.com/share?url=https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                     title="Share on Google+"
                     aria-label="Share on Google+"
                 >
@@ -563,7 +563,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://www.facebook.com/sharer/sharer.php?u=http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                         aria-label="Share on Facebook"
                     >
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
@@ -576,7 +576,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://twitter.com/intent/tweet?text=http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                        href="https://twitter.com/intent/tweet?text=https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                         aria-label="Share on Twitter"
                     >
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
@@ -589,7 +589,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://plus.google.com/share?url=http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                        href="https://plus.google.com/share?url=https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                         aria-label="Share on Google+"
                     >
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
@@ -617,7 +617,7 @@
         
             <img id="about-card-picture" src="/assets/images/thumbnail.png" alt="Author&#39;s picture"/>
         
-            <h4 id="about-card-name">0rkha (GangJun Jo)</h4>
+            <h4 id="about-card-name">whyz (GangJun Jo)</h4>
         
             <div id="about-card-bio"><p>내가 만든 똥덩어리</p>
 </div>
@@ -665,7 +665,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/21/%EC%9D%B4-%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/"
+                            href="https://whyz-dev.github.io/2019/07/21/%EC%9D%B4-%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/"
                             aria-label=": Intro"
                         >
                             <h3 class="media-heading">Intro</h3>
@@ -689,7 +689,7 @@
                     <div class="media-left">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/26/BOJ-2293-%EB%8F%99%EC%A0%84-1/"
+                            href="https://whyz-dev.github.io/2019/07/26/BOJ-2293-%EB%8F%99%EC%A0%84-1/"
                             aria-label=": [BOJ] 2293 | 동전 1"
                         >
                             <img class="media-image" src="https://d2gd6pc034wcta.cloudfront.net/tier/11.svg" width="90" height="90"/>
@@ -699,7 +699,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/26/BOJ-2293-%EB%8F%99%EC%A0%84-1/"
+                            href="https://whyz-dev.github.io/2019/07/26/BOJ-2293-%EB%8F%99%EC%A0%84-1/"
                             aria-label=": [BOJ] 2293 | 동전 1"
                         >
                             <h3 class="media-heading">[BOJ] 2293 | 동전 1</h3>
@@ -722,7 +722,7 @@
                     <div class="media-left">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                            href="https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                             aria-label=": [BOJ] 1451 | 직사각형으로 나누기"
                         >
                             <img class="media-image" src="https://d2gd6pc034wcta.cloudfront.net/tier/11.svg" width="90" height="90"/>
@@ -732,7 +732,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
+                            href="https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/"
                             aria-label=": [BOJ] 1451 | 직사각형으로 나누기"
                         >
                             <h3 class="media-heading">[BOJ] 1451 | 직사각형으로 나누기</h3>
@@ -755,7 +755,7 @@
                     <div class="media-left">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/26/BOJ-2294-%EB%8F%99%EC%A0%84-2/"
+                            href="https://whyz-dev.github.io/2019/07/26/BOJ-2294-%EB%8F%99%EC%A0%84-2/"
                             aria-label=": [BOJ] 2294 | 동전 2"
                         >
                             <img class="media-image" src="https://d2gd6pc034wcta.cloudfront.net/tier/11.svg" width="90" height="90"/>
@@ -765,7 +765,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/26/BOJ-2294-%EB%8F%99%EC%A0%84-2/"
+                            href="https://whyz-dev.github.io/2019/07/26/BOJ-2294-%EB%8F%99%EC%A0%84-2/"
                             aria-label=": [BOJ] 2294 | 동전 2"
                         >
                             <h3 class="media-heading">[BOJ] 2294 | 동전 2</h3>
@@ -788,7 +788,7 @@
                     <div class="media-left">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/26/BOJ-11047-%EB%8F%99%EC%A0%84-0/"
+                            href="https://whyz-dev.github.io/2019/07/26/BOJ-11047-%EB%8F%99%EC%A0%84-0/"
                             aria-label=": [BOJ] 11047 | 동전 0"
                         >
                             <img class="media-image" src="https://d2gd6pc034wcta.cloudfront.net/tier/7.svg" width="90" height="90"/>
@@ -798,7 +798,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/26/BOJ-11047-%EB%8F%99%EC%A0%84-0/"
+                            href="https://whyz-dev.github.io/2019/07/26/BOJ-11047-%EB%8F%99%EC%A0%84-0/"
                             aria-label=": [BOJ] 11047 | 동전 0"
                         >
                             <h3 class="media-heading">[BOJ] 11047 | 동전 0</h3>
@@ -821,7 +821,7 @@
                     <div class="media-left">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/28/BOJ-2436-%EA%B3%B5%EC%95%BD%EC%88%98/"
+                            href="https://whyz-dev.github.io/2019/07/28/BOJ-2436-%EA%B3%B5%EC%95%BD%EC%88%98/"
                             aria-label=": [BOJ] 2436 | 공약수"
                         >
                             <img class="media-image" src="https://d2gd6pc034wcta.cloudfront.net/tier/11.svg" width="90" height="90"/>
@@ -831,7 +831,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/07/28/BOJ-2436-%EA%B3%B5%EC%95%BD%EC%88%98/"
+                            href="https://whyz-dev.github.io/2019/07/28/BOJ-2436-%EA%B3%B5%EC%95%BD%EC%88%98/"
                             aria-label=": [BOJ] 2436 | 공약수"
                         >
                             <h3 class="media-heading">[BOJ] 2436 | 공약수</h3>
@@ -854,7 +854,7 @@
                     <div class="media-left">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/"
+                            href="https://whyz-dev.github.io/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/"
                             aria-label=": [BOJ] 13537 | 수열과 쿼리 1"
                         >
                             <img class="media-image" src="https://d2gd6pc034wcta.cloudfront.net/tier/18.svg" width="90" height="90"/>
@@ -864,7 +864,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/"
+                            href="https://whyz-dev.github.io/2019/08/01/BOJ-13537-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-1/"
                             aria-label=": [BOJ] 13537 | 수열과 쿼리 1"
                         >
                             <h3 class="media-heading">[BOJ] 13537 | 수열과 쿼리 1</h3>
@@ -887,7 +887,7 @@
                     <div class="media-left">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/08/07/BOJ-5419-%EB%B6%81%EC%84%9C%ED%92%8D/"
+                            href="https://whyz-dev.github.io/2019/08/07/BOJ-5419-%EB%B6%81%EC%84%9C%ED%92%8D/"
                             aria-label=": [BOJ] 5419 | 북서풍"
                         >
                             <img class="media-image" src="https://d2gd6pc034wcta.cloudfront.net/tier/17.svg" width="90" height="90"/>
@@ -897,7 +897,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/08/07/BOJ-5419-%EB%B6%81%EC%84%9C%ED%92%8D/"
+                            href="https://whyz-dev.github.io/2019/08/07/BOJ-5419-%EB%B6%81%EC%84%9C%ED%92%8D/"
                             aria-label=": [BOJ] 5419 | 북서풍"
                         >
                             <h3 class="media-heading">[BOJ] 5419 | 북서풍</h3>
@@ -920,7 +920,7 @@
                     <div class="media-left">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/08/07/BOJ-3176-%EB%8F%84%EB%A1%9C-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/"
+                            href="https://whyz-dev.github.io/2019/08/07/BOJ-3176-%EB%8F%84%EB%A1%9C-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/"
                             aria-label=": [BOJ] 3176 | 도로 네트워크"
                         >
                             <img class="media-image" src="https://d2gd6pc034wcta.cloudfront.net/tier/17.svg" width="90" height="90"/>
@@ -930,7 +930,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://0rkha.xyz/2019/08/07/BOJ-3176-%EB%8F%84%EB%A1%9C-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/"
+                            href="https://whyz-dev.github.io/2019/08/07/BOJ-3176-%EB%8F%84%EB%A1%9C-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/"
                             aria-label=": [BOJ] 3176 | 도로 네트워크"
                         >
                             <h3 class="media-heading">[BOJ] 3176 | 도로 네트워크</h3>
@@ -983,7 +983,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://0rkha.xyz/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/';
+            this.page.url = 'https://whyz-dev.github.io/2019/07/26/BOJ-1451-%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%84%EA%B8%B0/';
               
             this.page.identifier = '2019/07/26/BOJ-1451-직사각형으로-나누기/';
               
