@@ -1,9 +1,0 @@
----
-import Base from '../../layouts/Base.astro';
-import { getPosts, tags, tagHref, tagLabel } from '../../lib';
-const all = tags(await getPosts());
----
-<Base title="주제" active="tags">
-  <header class="page-head"><h1>주제</h1><span>{all.length}개의 태그</span></header>
-  <div class="tags big">{all.map(([t, n]) => <a href={tagHref(t)}>{tagLabel(t)} <small>{n}</small></a>)}</div>
-</Base>
