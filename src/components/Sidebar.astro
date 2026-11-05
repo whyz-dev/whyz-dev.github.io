@@ -1,0 +1,17 @@
+---
+import { categories, tags, catHref, catLabel, tagHref, tagLabel } from '../lib';
+const { posts, active = null } = Astro.props;
+---
+<aside class="side">
+  <section class="side-box">
+    <h4>카테고리</h4>
+    <ul class="side-cats">
+      <li><a href="/" class:list={[{ on: active === 'all' }]}><span>전체</span><small>{posts.length}</small></a></li>
+      {categories(posts).map(([c, n]) => <li><a href={catHref(c)} class:list={[{ on: active === c }]}><span>{catLabel(c)}</span><small>{n}</small></a></li>)}
+    </ul>
+  </section>
+  <section class="side-box">
+    <h4>주제</h4>
+    <div class="tags">{tags(posts).slice(0, 18).map(([t]) => <a href={tagHref(t)}>{tagLabel(t)}</a>)}</div>
+  </section>
+</aside>

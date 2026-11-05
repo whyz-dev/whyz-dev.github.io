@@ -1,0 +1,26 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getPosts, fmt, categoryOf, catHref, catLabel, tagHref, tagLabel } from '../../lib';
+export async function getStaticPaths() {
+  return (await getPosts()).map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const cat = categoryOf(post);
+---
+<Base title={post.data.title} active={cat}>
+  <article class="article">
+    <header class="article-head">
+      <a class="chip" href={catHref(cat)}>{catLabel(cat)}</a>
+      <h1>{post.data.title}</h1>
+      <div class="article-meta">
+        <img src="/img/avatar.png" alt="" width="32" height="32" />
+        <div><b>whyz</b><time>{fmt(post.data.date).replaceAll('-', '. ')}</time></div>
+      </div>
+    </header>
+    <div class="prose"><Content /></div>
+    {post.data.tags.length > 0 && <div class="tags article-tags">{post.data.tags.map((t) => <a href={tagHref(t)}>{tagLabel(t)}</a>)}</div>}
+    <a href={catHref(cat)} class="back">← {catLabel(cat)} 글 더 보기</a>
+  </article>
+</Base>

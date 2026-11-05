@@ -1,0 +1,122 @@
+---
+import { getAnnouncements, getPosts, excerpt } from '../lib';
+import { sortedTimeline, periodOf } from '../data/timeline';
+import { PROFILE, LINKS } from '../data/profile';
+const items = await getAnnouncements();
+// set to false to stop adding the latest post as the last banner
+const SHOW_LATEST_POST = true;
+const slides = items.map((a) => ({ kind: a.data.kind, badges: a.data.badges, label: a.data.label, title: a.data.title, description: a.data.description ?? '', image: a.data.image ?? '/img/city.jpg', link: a.data.link, linkLabel: a.data.linkLabel }));
+if (SHOW_LATEST_POST || slides.length === 0) {
+  const [p] = await getPosts();
+  slides.push({ kind: 'default', badges: [] as string[], label: '최신 글', title: p.data.title, description: excerpt(p, 90), image: p.data.thumbnailImage && !p.data.thumbnailImage.endsWith('.svg') ? p.data.thumbnailImage : '/img/city.jpg', link: `/posts/${p.id}/`, linkLabel: '읽어보기' });
+}
+const external = (l?: string) => !!l && /^https?:/.test(l);
+// profile 배너: 소개 문구·링크·메일은 소개 페이지와 같은 profile.ts 값을 사용
+const profileIntro = PROFILE.intro.join(' ');
+const profileLinks = [
+  { label: 'GitHub', href: LINKS.github }, { label: 'Dacon', href: LINKS.dacon },
+  { label: 'Kaggle', href: LINKS.kaggle }, { label: 'LinkedIn', href: LINKS.linkedin },
+].filter((l) => l.href);
+const profileEmails = LINKS.emails.filter(Boolean);
+// timeline preview data
+const tl = sortedTimeline();
+const tlRecent = tl.slice(0, 3);
+---
+<section class="feature" aria-roledescription="carousel" aria-label="공지">
+  <div class="feature-track" data-track>
+    {slides.map((s, i) => (
+      <article class="feature-slide" aria-roledescription="slide" aria-label={`${i + 1} / ${slides.length}`}>
+        <div class="feature-text">
+          <span class="chip">{s.label}</span>
+          <h1>{s.link ? <a href={s.link} target={external(s.link) ? '_blank' : undefined} rel={external(s.link) ? 'noopener' : undefined}>{s.title}</a> : s.title}</h1>
+          {s.kind === 'profile' ? <p>{profileIntro}</p> : s.description && <p>{s.description}</p>}
+          {s.kind === 'profile' && (
+            <div class="fp-contact">
+              <nav class="about-links" aria-label="링크">{profileLinks.map((l) => <a href={l.href} target="_blank" rel="noopener" class="about-link">{l.label} ↗</a>)}</nav>
+              {profileEmails.length > 0 && <ul class="about-mail" aria-label="메일">{profileEmails.map((m) => <li><a href={`mailto:${m}`}><span aria-hidden="true">✉</span>{m}</a></li>)}</ul>}
+            </div>
+          )}
+          {s.link && <a class="feature-link" href={s.link} target={external(s.link) ? '_blank' : undefined} rel={external(s.link) ? 'noopener' : undefined}>{s.linkLabel} →</a>}
+        </div>
+        {s.kind === 'timeline' ? (
+          <a class="feature-art feature-tl" href={s.link ?? '/timeline/'} aria-label="타임라인으로 이동">
+            <ol>
+              {tlRecent.map((t) => (
+                <li>
+                  <span class:list={['ftl-dot', { award: t.award, now: t.end === 'now' }]} aria-hidden="true"></span>
+                  <div>
+                    <small>{t.type === 'contest' ? '대회' : '프로젝트'} · {periodOf(t)}</small>
+                    <b>{t.title}</b>
+                    {t.result && <em class:list={[{ award: t.award }]}>{t.result}</em>}
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <span class="ftl-more">+ {tl.length - tlRecent.length}개 더 보기</span>
+          </a>
+        ) : s.kind === 'profile' ? (
+          <div class="feature-art feature-profile" aria-hidden="true">
+            <span class="fp-blob fp-b1"></span><span class="fp-blob fp-b2"></span><span class="fp-blob fp-b3"></span>
+            <span class="fp-ring fp-r1"></span><span class="fp-ring fp-r2"></span>
+            <img class="fp-avatar" src={s.image} alt="" loading={i === 0 ? 'eager' : 'lazy'} />
+            {s.badges.map((b, k) => <span class={`fp-badge fp-badge-${k % 4}`}>{b}</span>)}
+          </div>
+        ) : (
+          <div class="feature-art"><img src={s.image} alt="" loading={i === 0 ? 'eager' : 'lazy'} /></div>
+        )}
+      </article>
+    ))}
+  </div>
+  {slides.length > 1 && (
+    <div class="feature-ctrl">
+      <button type="button" data-prev aria-label="이전">‹</button>
+      <div class="feature-dots" role="tablist">
+        {slides.map((_, i) => <button type="button" role="tab" data-dot={i} aria-label={`${i + 1}번 배너`} aria-selected={i === 0 ? 'true' : 'false'}><span></span></button>)}
+      </div>
+      <button type="button" data-next aria-label="다음">›</button>
+    </div>
+  )}
+</section>
+<script>
+  const INTERVAL = 6000; // ms per banner
+  document.querySelectorAll<HTMLElement>('.feature').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-track]');
+    if (!track) return;
+    const n = track.children.length;
+    if (n < 2) return;
+    const dots = [...root.querySelectorAll<HTMLElement>('[data-dot]')];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // distance between slides = slide width + CSS gap
+    const step = () => (track.children[1] as HTMLElement).offsetLeft - (track.children[0] as HTMLElement).offsetLeft;
+    const idx = () => Math.round(track.scrollLeft / step());
+    const go = (i: number) => track.scrollTo({ left: ((i + n) % n) * step(), behavior: reduce ? 'auto' : 'smooth' });
+    // fit the banner height to the visible slide (slides can differ in height, especially on mobile)
+    const fit = () => { const el = track.children[idx()] as HTMLElement | undefined; if (el) track.style.height = `${el.offsetHeight}px`; };
+    const mark = () => { dots.forEach((d, i) => d.setAttribute('aria-selected', String(i === idx()))); fit(); };
+    fit();
+    addEventListener('resize', fit);
+
+    let timer: number | undefined;
+    const stop = () => { clearInterval(timer); timer = undefined; root.classList.remove('playing'); };
+    const start = () => {
+      if (reduce || document.hidden) return;
+      stop();
+      root.classList.add('playing');
+      // restart the progress animation on the active dot
+      dots.forEach((d) => d.getAnimations({ subtree: true }).forEach((a) => (a.currentTime = 0)));
+      timer = window.setInterval(() => go(idx() + 1), INTERVAL);
+    };
+
+    root.querySelector('[data-prev]')?.addEventListener('click', () => { go(idx() - 1); start(); });
+    root.querySelector('[data-next]')?.addEventListener('click', () => { go(idx() + 1); start(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { go(i); start(); }));
+    let t: number;
+    track.addEventListener('scroll', () => { clearTimeout(t); t = window.setTimeout(() => { mark(); if (timer) start(); }, 120); }, { passive: true });
+    // pause only while a keyboard user is inside the banner
+    root.addEventListener('focusin', (e) => { if ((e.target as HTMLElement).matches(':focus-visible')) stop(); });
+    root.addEventListener('focusout', () => { if (!timer) start(); });
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+    root.style.setProperty('--interval', `${INTERVAL}ms`);
+    start();
+  });
+</script>
